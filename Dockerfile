@@ -12,7 +12,7 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 COPY dndserver/alembic.ini ./
 COPY config.yml dndserver/
-COPY entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /
 # Copy the application's source code
 COPY . .
 
@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 13337
 
 # Set the entrypoint
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]

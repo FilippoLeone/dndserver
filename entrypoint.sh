@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Entrypoint script for the D&D server
-chmod +x /entrypoint.sh
+chmod +x ./entrypoint.sh
 
 # Install poetry
 python -m pip install poetry
@@ -19,4 +19,4 @@ alembic upgrade head
 cd ..
 
 # Start the server
-python -m dndserver
+python -m dndserver.server
