@@ -78,6 +78,8 @@ class GameProtocol(Protocol):
                 pc.C2S_GATHERING_HALL_CHANNEL_SELECT_REQ: gatheringhall.gathering_hall_select_channel,
                 pc.C2S_GATHERING_HALL_TARGET_EQUIPPED_ITEM_REQ: gatheringhall.gathering_hall_equip,
                 pc.C2S_RE_LOGIN_REQ : ingame.relogin,
+                pc.C2S_GATHERING_HALL_CHANNEL_EXIT_REQ : gatheringhall.gathering_hall_channel_exit,
+                pc.C2S_GATHERING_HALL_CHANNEL_CHAT_REQ : gatheringhall.chat,
             }
             handler = [k for k in handlers.keys() if k == _id]
             if not handler:
