@@ -3,7 +3,7 @@ import struct
 from loguru import logger
 from twisted.internet.protocol import Factory, Protocol
 
-from dndserver.handlers import character, friends, lobby, login, trade, menu, merchant, party, ranking
+from dndserver.handlers import character, friends, lobby, login, trade, menu, merchant, party, ranking, gatheringhall
 from dndserver.objects.user import User
 from dndserver.protos import PacketCommand as pc
 from dndserver.sessions import sessions
@@ -73,11 +73,9 @@ class GameProtocol(Protocol):
                 pc.C2S_TRADE_MEMBERSHIP_REQUIREMENT_REQ: trade.get_trade_reqs,
                 pc.C2S_TRADE_MEMBERSHIP_REQ: trade.process_membership,
                 pc.C2S_RANKING_RANGE_REQ: ranking.get_ranking,
-                pc.C2S_AUTO_MATCH_REG_REQ: ingame.matchmaking,
                 pc.C2S_GATHERING_HALL_CHANNEL_LIST_REQ: gatheringhall.gathering_hall_channel_list,
                 pc.C2S_GATHERING_HALL_CHANNEL_SELECT_REQ: gatheringhall.gathering_hall_select_channel,
                 pc.C2S_GATHERING_HALL_TARGET_EQUIPPED_ITEM_REQ: gatheringhall.gathering_hall_equip,
-                pc.C2S_RE_LOGIN_REQ : ingame.relogin,
                 pc.C2S_GATHERING_HALL_CHANNEL_EXIT_REQ : gatheringhall.gathering_hall_channel_exit,
                 pc.C2S_GATHERING_HALL_CHANNEL_CHAT_REQ : gatheringhall.chat,
             }
